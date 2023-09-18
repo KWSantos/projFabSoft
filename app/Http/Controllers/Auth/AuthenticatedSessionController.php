@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -29,9 +30,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = User::where('id', $request->id);
+        //return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()-> intended(route('users.show', $user));
+        
     }
 
+    //public function show ()
     /**
      * Destroy an authenticated session.
      */
