@@ -1,18 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('auth/login');
@@ -24,7 +14,7 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::post('/users/{user}', [UserController::class, 'show'])->name('users.show');
 Route::post('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users', [UserController::class, 'index'])->name('users.index');
+Route::delete('/users', [UserController::class, 'destroy'])->name('users.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
