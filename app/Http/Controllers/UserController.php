@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class UserController extends Controller
 {
+
+    public readonly User $user;
+
+    public function __construct(){
+        $this->user = new User;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -15,6 +21,8 @@ class UserController extends Controller
         $users = User::get();
 
         return view('users', compact('users'));
+        $users = $this->user->all();
+        return view('users', ['users'=>$users]);
     }
 
     /**
