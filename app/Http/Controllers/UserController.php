@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
@@ -17,6 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $users = User::get();
+
+        return view('users', compact('users'));
         $users = $this->user->all();
         return view('users', ['users'=>$users]);
     }
@@ -42,7 +45,9 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        dd($user);
+        
     }
 
     /**

@@ -1,9 +1,10 @@
-<h1>Users</h1>
+<h1>Listagem dos Usuários</h1>
 
 <ul>
-    @foreach ($user as $user)
+    @foreach ($users as $user)
         <li>
-            {{$user->name}}
+            {{ $user->name }} -
+            {{ $user->email }}
         </li>
     @endforeach
 </ul>
